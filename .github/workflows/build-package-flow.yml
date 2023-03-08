@@ -8,6 +8,11 @@ on:
         required: false
         type: string
         default: 'ContinuousDeployment'
+      artifact-name:
+        description: 'A name used to publish artifacts'
+        required: false
+        type: string
+        default: 'package'
       solution-file:
         description: 'Path and name of the solution file'
         required: false
@@ -65,10 +70,10 @@ jobs:
     #   run: |
     #     dotnet nuget push '${{ env.PackageOutputPath }}\*' --skip-duplicate --source github
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: Package
         path: '${{ env.PackageOutputPath }}'
-        
+
     - name: Label Fixed Issues
       uses: gh-bot/fix-labeler@master        
