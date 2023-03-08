@@ -2,7 +2,6 @@ name:  Build & Test workflow
 
 on:
   workflow_call:
-    secrets: inherit
     inputs:
       PackageOutputPath:
         required: true
@@ -10,6 +9,9 @@ on:
       checkout-path:
         required: true
         type: string
+    secrets:
+      token:
+        required: true    
 
 jobs:
 
