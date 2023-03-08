@@ -23,12 +23,6 @@ jobs:
       PackageOutputPath: '${{ github.workspace }}\package'
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        path: Container
-        fetch-depth: 0
-
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
