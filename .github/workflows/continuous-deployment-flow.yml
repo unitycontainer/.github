@@ -1,4 +1,4 @@
-name:  Build & Test workflow
+name:  Continuous Deployment workflow
 
 on:
   workflow_call:
