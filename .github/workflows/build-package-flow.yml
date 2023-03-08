@@ -24,12 +24,12 @@ jobs:
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
-        gitversion /l console /output buildserver /config .github\gitversion.yml /overrideconfig mode=${{ env.GitVersion_InformationalVersion }} 
+        gitversion /l console /output buildserver /config .github\gitversion.yml /overrideconfig mode=${{ inputs.version-mode }} 
 
-    # - name: Setup .NET Core SDK
-    #   uses: actions/setup-dotnet@v3.0.3
-    #   with:
-    #     dotnet-version: '8.0'
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: '6.0'
 
     # - name: Build
     #   env:
