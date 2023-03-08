@@ -4,10 +4,10 @@ on:
   workflow_call:
     secrets: inherit
     inputs:
-      PackageOutputPath
+      PackageOutputPath:
         required: true
         type: string
-      path:
+      checkout-path:
         required: true
         type: string
 
@@ -26,7 +26,7 @@ jobs:
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
-        gitversion /l console /output buildserver /config .github\gitversion.yml
+        gitversion /l console /output buildserver /config .github\gitversion.yml /targetPath ${{ inputs.checkout-path }}
 
     # - name: Setup .NET Core SDK
     #   uses: actions/setup-dotnet@v3.0.3
