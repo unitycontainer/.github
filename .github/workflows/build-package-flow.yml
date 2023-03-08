@@ -22,6 +22,7 @@ jobs:
     env:
       DOTNET_NOLOGO: '1'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      PackageOutputPath: '${{ github.workspace }}\package'
 
     steps:
     - name: Checkout
@@ -63,6 +64,11 @@ jobs:
     # - name: Publish Local Package
     #   run: |
     #     dotnet nuget push '${{ env.PackageOutputPath }}\*' --skip-duplicate --source github
-
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Package
+        path: '${{ env.PackageOutputPath }}'
+        
     - name: Label Fixed Issues
       uses: gh-bot/fix-labeler@master        
