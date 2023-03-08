@@ -3,15 +3,9 @@ name:  Build & Test workflow
 on:
   workflow_call:
     inputs:
-      PackageOutputPath:
+      version-mode:
         required: true
         type: string
-      checkout-path:
-        required: true
-        type: string
-    # secrets:
-    #   token:
-    #     required: true    
 
 jobs:
 
@@ -22,13 +16,15 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
 
     steps:
-    - name: Fetch Tags
-      run: git fetch --unshallow 
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
-        gitversion /l console /output buildserver /config .github\gitversion.yml /targetPath ${{ inputs.checkout-path }}
+        gitversion /l console /output buildserver /config .github\gitversion.yml /overrideconfig mode=${{ env.GitVersion_InformationalVersion }} 
 
     # - name: Setup .NET Core SDK
     #   uses: actions/setup-dotnet@v3.0.3
