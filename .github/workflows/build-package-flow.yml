@@ -35,6 +35,9 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Label Fixed Issues
+      uses: gh-bot/fix-labeler@master        
+
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
@@ -71,6 +74,3 @@ jobs:
       with:
         name: '${{ inputs.artifact-name }}'
         path: '${{ env.PackageOutputPath }}'
-
-    - name: Label Fixed Issues
-      uses: gh-bot/fix-labeler@master        
