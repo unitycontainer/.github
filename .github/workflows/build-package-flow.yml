@@ -60,11 +60,11 @@ jobs:
         AssemblyVersion: '${{ env.GitVersion_AssemblySemVer }}'
         InformationalVersion: '${{ env.GitVersion_InformationalVersion }}'
       run: | 
-        dotnet msbuild -property:Configuration=Release -verbosity:m -restore:True ${{ inputs.solution-file }}
+        dotnet msbuild -property:Configuration=Release -verbosity:m -restore:True ${{ inputs.solution-path }}
 
     - name: Test
       run: | 
-        dotnet test --no-restore --no-build --configuration Release ${{ inputs.solution-file }}
+        dotnet test --no-restore --no-build --configuration Release ${{ inputs.solution-path }}
     
     - name: Upload artifact
       uses: actions/upload-artifact@v3
