@@ -59,7 +59,7 @@ jobs:
         VersionPatch: '${{ env.GitVersion_Patch }}'
         Version: '${{ env.GitVersion_MajorMinorPatch }}'
         FileVersion: '${{ env.GitVersion_AssemblySemFileVer }}'
-        PackageVersion: '${{ env.GitVersion_SemVer }}'
+        PackageVersion: '${{ env.GitVersion_FullSemVer }}'
         AssemblyVersion: '${{ env.GitVersion_AssemblySemVer }}'
         InformationalVersion: '${{ env.GitVersion_InformationalVersion }}'
       run: | 
