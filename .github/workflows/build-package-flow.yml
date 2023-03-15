@@ -42,7 +42,7 @@ jobs:
       run: | 
         # choco install gitversion.portable -pre -y --no-progress
         dotnet tool install --global GitVersion.Tool --version 5.12.*
-        gitversion /l console /output buildserver ${{ inputs.cmd-arguments }}         
+        dotnet gitversion /l console /output buildserver ${{ inputs.cmd-arguments }}         
 
     # - name: Setup .NET Core SDK
     #   uses: actions/setup-dotnet@v3
