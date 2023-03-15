@@ -41,7 +41,7 @@ jobs:
     - name: GitVersion
       run: | 
         choco install gitversion.portable -pre -y --no-progress
-        gitversion /l console /output buildserver /overrideconfig ${{ inputs.override-confige }} 
+        gitversion /l console /overrideconfig ${{ inputs.override-confige }} 
         gitversion /showvariable FullSemVer
 
     # - name: Setup .NET Core SDK
