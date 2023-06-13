@@ -37,7 +37,7 @@ jobs:
 
     - name: Retrieve the certificate
       run: |
-        mkdir eng/signing
+        mkdir -p eng/signing
         echo $CERTIFICATE_BASE64 | base64 -d > eng/signing/package.snk
         echo $TOKEN_BASE64       | base64 -d > eng/signing/token.snk
       shell: bash
