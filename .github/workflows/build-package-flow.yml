@@ -35,6 +35,16 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Retrieve the certificate
+      run: |
+        mkdir eng/signing
+        echo $CERTIFICATE_BASE64 | base64 -d > eng/signing/package.snk
+        echo $TOKEN_BASE64       | base64 -d > eng/signing/token.snk
+      shell: bash
+      env:
+        CERTIFICATE_BASE64: ${{secrets.CERTIFICATE_BASE64}}
+        TOKEN_BASE64: ${{secrets.TOKEN_BASE64}}
+
     - name: Label Fixed Issues
       uses: gh-bot/fix-labeler@master        
 
